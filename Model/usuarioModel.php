@@ -16,24 +16,6 @@ class UsuarioModel {
     private $dt_date;
     private $dt_telefone;
 
-    function cadastrarLoginModel() {
-        try {
-
-            $pdo = new Config();
-            $insertLogin = $pdo->prepare("INSERT INTO tb_login (dt_login, dt_password, dt_perfil) VALUES (:dt_login, :dt_password, :dt_perfil)");
-            $insertLogin->bindValue(":dt_login", $this->dt_login);
-            $insertLogin->bindValue(":dt_password", $this->dt_password);
-            $insertLogin->bindValue(":dt_perfil", $this->dt_perfil);
-            if ($insertLogin->execute()) {
-                return true;
-            } else {
-                return FALSE;
-            }
-        } catch (PDOException $exc) {
-            echo $exc->getMessage();
-        }
-    }//cadastrarLoginModel
-
     function insertUserModel() {
         try {
             $pdo = new Config();

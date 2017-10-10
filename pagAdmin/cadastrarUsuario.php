@@ -69,7 +69,7 @@ and open the template in the editor.
 
                                                 <div class="container">
                                                     <!--<h1>Corpo do Cadastro de login e senha aqui</h1>-->
-                                                    <form class="form form-group" action="../Controller/usuarioControler.php?action=insertAcesso" method="POST">
+                                                    <form class="form form-group" action="../Controller/loginControler.php?action=insertAcesso" method="POST">
                                                         <div class="form-row">
                                                             <div class="form-group col-md-6">
                                                                 <label for="inputName" class="col-form-label">Login:</label><span class="red">*</span>

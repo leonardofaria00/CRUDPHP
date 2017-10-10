@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Description of usuarioModel
+ *
+ * @Leonardo Faria dos Santos 61 9 9353-2946
+ */
 class Config extends PDO {
 
     private $dsn = 'mysql:dbname=projeto5sch;host=localhost';

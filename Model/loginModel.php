@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Description of usuarioModel
+ *
+ * @Leonardo Faria dos Santos 61 9 9353-2946
+ */
 include_once '../Controller/config.php';
 
 class LoginModel {
@@ -20,6 +24,24 @@ class LoginModel {
             echo 'Erro ao logar no sistema no sistema:::::: ' . $ex->getMessage();
         }
     }//loginUserModel
+
+    function cadastrarLoginModel() {
+        try {
+
+            $pdo = new Config();
+            $insertLogin = $pdo->prepare("INSERT INTO tb_login (dt_login, dt_password, dt_perfil) VALUES (:dt_login, :dt_password, :dt_perfil)");
+            $insertLogin->bindValue(":dt_login", $this->login);
+            $insertLogin->bindValue(":dt_password", $this->password);
+            $insertLogin->bindValue(":dt_perfil", $this->perfil);
+            if ($insertLogin->execute()) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        } catch (PDOException $exc) {
+            echo 'Erro ao cadastrar Login, erro: ' . $exc->getMessage();
+        }
+    }//cadastrarLoginModel
 
     function getLogin() {
         return $this->login;

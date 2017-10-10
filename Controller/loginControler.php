@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Description of usuarioModel
+ *
+ * @Leonardo Faria dos Santos 61 9 9353-2946
+ */
 include_once '../Model/loginModel.php';
 
 if (isset($_GET['action'])) {
@@ -7,6 +11,10 @@ if (isset($_GET['action'])) {
     if ($action == 'logarSistema') {
         $usuarioControler = new classLoginControler();
         $usuarioControler->loginUserControl();
+    }
+     if ($action == 'insertAcesso') {
+        $usuario = new classLoginControler();
+        $usuario->cadastrarLogin();
     }
 }//isset
 
@@ -33,4 +41,19 @@ class classLoginControler {
             header("Location: ../pagAdmin/home.php");
         }
     }//loginUsuario
+    
+      function cadastrarLogin() {
+        $nameLogin = $_POST['nameLogin'];
+        $namePassword = $_POST['namePassword'];
+        $perfil = $_POST['perfil'];
+        $model = new LoginModel();
+        $model->setLogin($nameLogin);
+        $model->setPassword($namePassword);
+        $model->setPerfil($perfil);
+        if ($model->cadastrarLoginModel()) {
+            header("Location: ../pagAdmin/cadastrarUsuario.php?msg=sucessAcesso");
+        } else {
+            header("Location: ../pagAdmin/cadastrarUsuario.php?msg=errorAcesso");
+        }
+    }//cadastrarLogin()
 }//validaLoginControler

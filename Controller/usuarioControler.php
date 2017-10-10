@@ -1,14 +1,13 @@
 <?php
-
+/**
+ * Description of usuarioModel
+ *
+ * @Leonardo Faria dos Santos 61 9 9353-2946
+ */
 include_once '../Model/usuarioModel.php';
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
-
-    if ($action == 'insertAcesso') {
-        $usuario = new UsuarioControler();
-        $usuario->cadastrarLogin();
-    }
 
     if ($action == 'insertUser') {
         $usuario = new UsuarioControler();
@@ -29,42 +28,6 @@ if (isset($_GET['action'])) {
 }//ifisset
 
 class UsuarioControler {
-
-    function cadastrarLogin() {
-        $nameLogin = $_POST['nameLogin'];
-        $namePassword = $_POST['namePassword'];
-        $perfil = $_POST['perfil'];
-        $model = new UsuarioModel();
-        $model->setDt_login($nameLogin);
-        $model->setDt_password($namePassword);
-        $model->setDt_perfil($perfil);
-        if ($model->cadastrarLoginModel()) {
-            header("Location: ../pagAdmin/cadastrarUsuario.php?msg=sucessAcesso");
-        } else {
-            header("Location: ../pagAdmin/cadastrarUsuario.php?msg=errorAcesso");
-        }
-    }//cadastrarLogin()
-
-    function loginUserControl() {
-        $usuario = $_POST['usuario'];
-        $senha = $_POST['senha'];
-        $um = new UsuarioModel();
-        $um->setDt_login($usuario);
-        $um->setDt_password($senha);
-        $rs = $um->loginUserModel();
-
-        if ($rs == FALSE) {
-            header("Location: ../login.php?msg=error");
-        } else {
-            session_start();
-            $_SESSION['id_user'] = $rs->id_user;
-            $_SESSION['dt_user'] = $rs->dt_user;
-            $_SESSION['dt_password'] = $rs->dt_password;
-            $_SESSION['dt_status'] = $rs->dt_status;
-            $_SESSION['logado'] = TRUE;
-            header("Location: ../pagAdmin/home.php");
-        }
-    }//loginUsuario
 
     function selectUserAllControl() {
         $usuario = new UsuarioModel();
