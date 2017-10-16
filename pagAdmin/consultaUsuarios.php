@@ -45,159 +45,149 @@ include_once '../Controller/usuarioControler.php';
 
             <div class="main-content">
                 <div class="main-content-inner">
-                    <div class="main-content">
-                        <div class="main-content-inner">
-                            <div class="page-content">
-                                <div class="row">
-                                    <div class="col-xs-12">								
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <h3 class="header smaller lighter blue container"><i class="ace-icon fa fa-folder-open-o bigger-200"></i>&nbsp;&nbsp;&nbsp; Consultar Usuários</h3>
-                                                <div class="clearfix">
-                                                    <div class="pull-right tableTools-container"></div>
-                                                </div>
-                                                <div class="container">
-                                                    <table id="dynamic-table" class="table table-striped table-bordered table-hover">
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="center">
-                                                                    <i class="ace-icon fa fa-code-fork bigger-110 hidden-480"></i> 
-                                                                    Cod. Atividade
-                                                                </th>
-                                                                <th class="center">
-                                                                    Nome
-                                                                </th>
-                                                                <th class="center">
-                                                                    <i class="ace-icon fa fa-yelp bigger-110 hidden-480"></i>     
-                                                                    Telefone
-                                                                </th>
-                                                                <th class="center">
-                                                                    <i class="ace-icon fa fa-globe bigger-110 hidden-480"></i> 
-                                                                    Perfil
-                                                                </th>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3 class="header smaller lighter blue container"><i class="ace-icon fa fa-folder-open-o bigger-200"></i>&nbsp;&nbsp;&nbsp; Consultar Usuários</h3>
+                            <div class="container">
+                                <div class="clearfix">
+                                    <div class="pull-right tableTools-container"></div>
+                                </div>
+                                <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="center">
+                                                <i class="ace-icon fa fa-code-fork bigger-110 hidden-480"></i> 
+                                                Cod. Atividade
+                                            </th>
+                                            <th class="center">
+                                                Nome
+                                            </th>
+                                            <th class="center">
+                                                <i class="ace-icon fa fa-yelp bigger-110 hidden-480"></i>     
+                                                Telefone
+                                            </th>
+                                            <th class="center">
+                                                <i class="ace-icon fa fa-globe bigger-110 hidden-480"></i> 
+                                                Perfil
+                                            </th>
 
-                                                                <th class="center">
-                                                                    <i class="ace-icon fa fa-star-half-empty bigger-110  hidden-480"></i> 
-                                                                    Status
-                                                                </th>
+                                            <th class="center">
+                                                <i class="ace-icon fa fa-star-half-empty bigger-110  hidden-480"></i> 
+                                                Status
+                                            </th>
 
-                                                                <th class="center">
-                                                                    <i class="ace-icon fa fa-calendar bigger-110 hidden-480"></i>  
-                                                                    Data de cadastro
-                                                                </th>
+                                            <th class="center">
+                                                <i class="ace-icon fa fa-calendar bigger-110 hidden-480"></i>  
+                                                Data de cadastro
+                                            </th>
 
-                                                                <th class="center">
-                                                                    Ações
-                                                                </th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <?php
-                                                            $read = new UsuarioControler();
-                                                            $array = $read->selectUserAllControl();
-                                                            foreach ($array as $value) {
-                                                                ?>                                                          
-                                                                <tr>
-                                                                    <td class="center">
-                                                                        <?= $value->id_user ?>   
-                                                                    </td>
-                                                                    <td class="center">
-                                                                        <?= $value->dt_user ?>  
-                                                                        <?php if ($value->dt_user == NULL) { ?>
-                                                                            <span class="label label-sm label-default">Não informado</span>
-                                                                        <?php } ?>
-                                                                    </td>
-                                                                    <td class="center">
-                                                                        <?= $value->dt_telefone ?>
-                                                                        <?php if ($value->dt_telefone == NULL) { ?>
-                                                                            <span class="label label-sm label-default">Não informado</span>
-                                                                        <?php } ?>
-                                                                    </td>                                                                                                                               
-                                                                    <td class="center">
-                                                                        <?php if ($value->dt_perfil == NULL) { ?>
-                                                                            <span class="label label-sm label-default">Não informado</span>
-                                                                        <?php } ?>
-                                                                        <?php if ($value->dt_perfil == 1) { ?>
-                                                                            <span class="label label-sm label-primary">Administrador</span>
-                                                                        <?php } ?>
-                                                                        <?php if ($value->dt_perfil == 2) { ?>
-                                                                            <span class="label label-sm label-danger">Funcionário</span>                                                                                                                                             
-                                                                        <?php } ?>
-                                                                    </td>
-                                                                    <td class="hidden-480 center center">
-                                                                        <?php if ($value->dt_status == 1) { ?>
-                                                                            <span class="label label-sm label-success">Ativo</span>
-                                                                        <?php } else { ?>
-                                                                            <span class="label label-sm label-danger">Inativo</span>                                                                                                                                             
-                                                                        <?php } ?>
-                                                                    </td>
+                                            <th class="center">
+                                                Ações
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $read = new UsuarioControler();
+                                        $array = $read->selectUserAllControl();
+                                        foreach ($array as $value) {
+                                            ?>                                                          
+                                            <tr>
+                                                <td class="center">
+                                                    <?= $value->id_user ?>   
+                                                </td>
+                                                <td class="center">
+                                                    <?= $value->dt_user ?>  
+                                                    <?php if ($value->dt_user == NULL) { ?>
+                                                        <span class="label label-sm label-default">Não informado</span>
+                                                    <?php } ?>
+                                                </td>
+                                                <td class="center">
+                                                    <?= $value->dt_telefone ?>
+                                                    <?php if ($value->dt_telefone == NULL) { ?>
+                                                        <span class="label label-sm label-default">Não informado</span>
+                                                    <?php } ?>
+                                                </td>                                                                                                                               
+                                                <td class="center">
+                                                    <?php if ($value->dt_perfil == NULL) { ?>
+                                                        <span class="label label-sm label-default">Não informado</span>
+                                                    <?php } ?>
+                                                    <?php if ($value->dt_perfil == 1) { ?>
+                                                        <span class="label label-sm label-primary">Administrador</span>
+                                                    <?php } ?>
+                                                    <?php if ($value->dt_perfil == 2) { ?>
+                                                        <span class="label label-sm label-danger">Funcionário</span>                                                                                                                                             
+                                                    <?php } ?>
+                                                </td>
+                                                <td class="hidden-480 center center">
+                                                    <?php if ($value->dt_status == 1) { ?>
+                                                        <span class="label label-sm label-success">Ativo</span>
+                                                    <?php } else { ?>
+                                                        <span class="label label-sm label-danger">Inativo</span>                                                                                                                                             
+                                                    <?php } ?>
+                                                </td>
 
-                                                                    <?php $data = $value->dt_date ?>
-                                                                    <?php $explode = explode('-', $data) ?>
-                                                                    <td class="center">                                                                        
-                                                                        <?= $explode[2] . "/" . $explode[1] . "/" . $explode[0] ?>
-                                                                        <?php if ($value->dt_date == NULL) { ?>
-                                                                            <span class="label label-sm label-default">Não informado</span>
-                                                                        <?php } ?>
-                                                                    </td>                                                                                                                                                                                                                                                                                                                                                                                                 
-                                                                    <td>
-                                                                        <div class="hidden-sm hidden-xs action-buttons center">
-                                                                            <a href="#"  class="blue tooltip-info" data-rel="tooltip" title="Detalhes">
-                                                                                <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                                                                            </a>
-                                                                            <a href="../Controller/usuarioControler.php?action=findUserId&idUser=<?= $value->id_user ?>" class="green tooltip-info" data-rel="tooltip" title="Editar">
-                                                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                                            </a>
-                                                                            <a href="../Controller/usuarioControler.php?action=deleteUserById&idUser=<?= $value->id_user ?>" class="red tooltip-info" data-rel="tooltip" title="Deletar">
-                                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                                            </a>  </div>
+                                                <?php $data = $value->dt_date ?>
+                                                <?php $explode = explode('-', $data) ?>
+                                                <td class="center">                                                                        
+                                                    <?= $explode[2] . "/" . $explode[1] . "/" . $explode[0] ?>
+                                                    <?php if ($value->dt_date == NULL) { ?>
+                                                        <span class="label label-sm label-default">Não informado</span>
+                                                    <?php } ?>
+                                                </td>                                                                                                                                                                                                                                                                                                                                                                                                 
+                                                <td>
+                                                    <div class="hidden-sm hidden-xs action-buttons center">
+                                                        <a href="#"  class="blue tooltip-info" data-rel="tooltip" title="Detalhes">
+                                                            <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                                                        </a>
+                                                        <a href="../Controller/usuarioControler.php?action=findUserId&idUser=<?= $value->id_user ?>" class="green tooltip-info" data-rel="tooltip" title="Editar">
+                                                            <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                                        </a>
+                                                        <a href="../Controller/usuarioControler.php?action=deleteUserById&idUser=<?= $value->id_user ?>" class="red tooltip-info" data-rel="tooltip" title="Deletar">
+                                                            <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                                        </a>  </div>
 
 
-                                                                        <div class="hidden-md hidden-lg">
-                                                                            <div class="inline pos-rel">
-                                                                                <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                                                                                    <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-                                                                                </button>
-                                                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                                                                    <li>
-                                                                                        <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-                                                                                            <span class="blue">
-                                                                                                <i class="ace-icon fa fa-search-plus bigger-120"></i>
-                                                                                            </span>
-                                                                                        </a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-                                                                                            <span class="green">
-                                                                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                                                                            </span>
-                                                                                        </a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-                                                                                            <span class="red">
-                                                                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                                                            </span>
-                                                                                        </a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                            <?php } ?>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>                                        
-                                    </div><!-- /.col -->
-                                </div><!-- /.row -->
-                            </div><!-- /.page-content -->
-                        </div>
-                    </div>
-                </div><!-- /.page-content -->
-            </div>
+                                                    <div class="hidden-md hidden-lg">
+                                                        <div class="inline pos-rel">
+                                                            <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                                                <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                                                <li>
+                                                                    <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+                                                                        <span class="blue">
+                                                                            <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                                                                        </span>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+                                                                        <span class="green">
+                                                                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                                        </span>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+                                                                        <span class="red">
+                                                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                                        </span>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div><!-- containert -->
+                        </div><!--col-xs-12-->
+                    </div><!--row-->
+                </div><!-- main-content-inner -->
+            </div><!--main-content-->
             <?php include_once '../template/footer.html'; ?>
         </div><!-- /.main-content -->
         <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
